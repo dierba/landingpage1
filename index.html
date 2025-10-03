@@ -4,7 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Entre no grupo Ô Tio Garimpeiro de Ofertas no WhatsApp e receba as melhores promoções e descontos diariamente.">
-    <title>Ofertas Cheirinho de Bebê - Entre no Grupo</title>    
+    <title>Ofertas Cheirinho de Bebê - Entre no Grupo</title>
+
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '3369119716563761'); // Substitua pelo seu Pixel ID
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=3369119716563761&ev=PageView&noscript=1"
+    /></noscript>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -147,11 +163,11 @@
 
         <h1>Ofertas Cheirinho de Bebê</h1>
 
-        <button class="button button-primary" onclick="entrarNoGrupo()">
+        <button class="button button-primary" onclick="trackConversion('botao-entrar', 'Lead'); entrarNoGrupo()">
             Entrar no grupo
         </button>
 
-        <button class="button button-secondary" id="copyButton" onclick="copiarLink()">
+        <button class="button button-secondary" id="copyButton" onclick="trackConversion('botao-copiar', 'ButtonClick'); copiarLink()">
             Copiar o link do grupo
         </button>
 
@@ -174,6 +190,17 @@
 
     <script>
         const linkDoGrupo = "https://whats.ly/v41fa";
+        
+        // Função para disparar o Pixel do Facebook
+        function trackConversion(buttonLocation = 'unknown', eventType = 'Lead') {
+            if (typeof fbq !== 'undefined') {
+                fbq('track', eventType, {
+                    button_location: buttonLocation,
+                    content_name: 'Ofertas Cheirinho de Bebê - Grupo WhatsApp',
+                });
+                console.log('Pixel disparado:', eventType, 'Local:', buttonLocation);
+            }
+        }
 
         function entrarNoGrupo() {
             window.location.href = linkDoGrupo;
